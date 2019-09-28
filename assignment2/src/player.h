@@ -3,8 +3,8 @@
 
 #include <Godot.hpp>
 #include <KinematicBody.hpp>
-#include <InputEvent.hpp>
 #include <Input.hpp>
+#include <KinematicCollision.hpp>
 
 namespace godot {
 

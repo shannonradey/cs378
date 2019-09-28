@@ -51,3 +51,6 @@ shape = SubResource( 7 )
 [node name="HeadCollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 shape = SubResource( 8 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( -0.0524881, 0.158709, -0.985929, 0.00843727, 0.987325, 0.158485, 0.998586, -9.30006e-10, -0.0531619, -4.23506, 3.10125, -0.0988388 )
