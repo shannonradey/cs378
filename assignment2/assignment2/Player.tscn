@@ -51,7 +51,3 @@ shape = SubResource( 7 )
 [node name="HeadCollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 shape = SubResource( 8 )
-
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( 0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, 0.939693, -7, 6, 14 )
-fov = 75.9375

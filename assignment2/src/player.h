@@ -4,6 +4,7 @@
 #include <Godot.hpp>
 #include <KinematicBody.hpp>
 #include <InputEvent.hpp>
+#include <Input.hpp>
 
 namespace godot {
 
@@ -13,7 +14,6 @@ class Player : public KinematicBody {
 private:
     float time_passed;
     Vector3 velocity;
-    InputEvent input;
 
 public:
     static void _register_methods();
@@ -23,8 +23,8 @@ public:
 
     void _init(); // our initializer called by Godot
 
-    void _physics_process(float delta);
-    void _process(float delta);
+    void _fixed_process(float delta);
+    void _input(Variant input);
 
     void move();
 };
