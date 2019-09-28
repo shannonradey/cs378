@@ -39,6 +39,8 @@ void Player::_fixed_process(float delta) {
         velocity.z -= 0.1;
     } 
 	KinematicCollision *collision = *move_and_collide(velocity);
+    if (collision != NULL)
+        Godot::print(collision->get_collider_id());
 }
 
 void Player::move() {
