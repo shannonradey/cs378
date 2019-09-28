@@ -20,6 +20,7 @@ void Player::_init() {
     // initialize any variables here
     time_passed = 0.0;
     velocity = Vector3(1, 0, 1);
+    input = Input::get_singleton();
 }
 
 void Player::_input(Variant input) {
@@ -27,8 +28,15 @@ void Player::_input(Variant input) {
 }
 
 void Player::_fixed_process(float delta) {
-    if (Input::is_action_pressed(_IO_RIGHT)) {
+
+    if (input->is_action_pressed("ui_right")) {
         velocity.x += 1;
+    } else if (input->is_action_pressed("ui_left")) {
+        velocity.x -= 1;
+    } else if (input->is_action_pressed("ui_up")) {
+        velocity.z += 1;
+    } else if (input->is_action_pressed("ui_down")) {
+        velocity.z -= 1;
     }
 	velocity = move_and_slide(velocity);
 }

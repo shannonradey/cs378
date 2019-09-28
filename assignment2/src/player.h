@@ -14,6 +14,7 @@ class Player : public KinematicBody {
 private:
     float time_passed;
     Vector3 velocity;
+    Input *input;
 
 public:
     static void _register_methods();
