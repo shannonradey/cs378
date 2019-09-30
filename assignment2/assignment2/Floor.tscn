@@ -9,5 +9,6 @@ material = SubResource( 1 )
 [node name="Spatial" type="Spatial"]
 
 [node name="CSGMesh" type="CSGMesh" parent="."]
-transform = Transform( 15, 0, 0, 0, 0.1, 0, 0, 0, 15, 0, 0, 0 )
+transform = Transform( 30, 0, 0, 0, 0.1, 0, 0, 0, 30, 0, 0, 0 )
 mesh = SubResource( 2 )
+

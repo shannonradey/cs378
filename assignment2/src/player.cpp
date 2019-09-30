@@ -30,13 +30,13 @@ void Player::_input(Variant input) {
 void Player::_fixed_process(float delta) {
     velocity = Vector3();
     if (input->is_action_pressed("ui_down")) {
-        velocity.x += 0.1;
-    } if (input->is_action_pressed("ui_up")) {
         velocity.x -= 0.1;
+    } if (input->is_action_pressed("ui_up")) {
+        velocity.x += 0.1;
     } if (input->is_action_pressed("ui_left")) {
-        velocity.z += 0.1;
-    } if (input->is_action_pressed("ui_right")) {
         velocity.z -= 0.1;
+    } if (input->is_action_pressed("ui_right")) {
+        velocity.z += 0.1;
     } 
 	KinematicCollision *collision = *move_and_collide(velocity);
     if (collision != NULL)
