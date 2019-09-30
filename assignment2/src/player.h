@@ -5,6 +5,8 @@
 #include <KinematicBody.hpp>
 #include <Input.hpp>
 #include <KinematicCollision.hpp>
+#include <cmath>
+#include <Transform.hpp>
 
 namespace godot {
 
@@ -15,6 +17,7 @@ private:
     float time_passed;
     Vector3 velocity;
     Input *input;
+    int x;
 
 public:
     static void _register_methods();
