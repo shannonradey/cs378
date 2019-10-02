@@ -115,3 +115,4 @@ omni_range = 144.37
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.73905, 0, -54.6354 )
 
 [node name="Node2D" parent="." instance=ExtResource( 13 )]
+
