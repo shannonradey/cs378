@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.596078, 0.462745, 0.305882, 1 )
@@ -12,13 +12,20 @@ albedo_color = Color( 0.247059, 0.52549, 0.137255, 1 )
 [sub_resource type="CubeMesh" id=4]
 material = SubResource( 3 )
 
+[sub_resource type="BoxShape" id=5]
+
 [node name="Spatial" type="Spatial"]
 
-[node name="CSGMesh" type="CSGMesh" parent="."]
+[node name="StaticBody" type="StaticBody" parent="."]
+
+[node name="CSGMesh" type="CSGMesh" parent="StaticBody"]
 transform = Transform( 15, 0, 0, 0, 5, 0, 0, 0, 15, 0, 5, 0 )
 mesh = SubResource( 2 )
 
-[node name="CSGMesh2" type="CSGMesh" parent="."]
+[node name="CSGMesh2" type="CSGMesh" parent="StaticBody"]
 transform = Transform( 15, 0, 0, 0, 0.8, 0, 0, 0, 15, 0, 10.8, 0 )
 mesh = SubResource( 4 )
 
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 15, 0, 0, 0, 5.6, 0, 0, 0, 15, 0, 6, 0 )
+shape = SubResource( 5 )
