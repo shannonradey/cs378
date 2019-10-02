@@ -7,6 +7,7 @@
 #include <KinematicCollision.hpp>
 #include <cmath>
 #include <Transform.hpp>
+#include <candycounter.h>
 
 namespace godot {
 
@@ -18,7 +19,6 @@ private:
     Vector3 velocity;
     Input *input;
     int x;
-    float gravity;
 
 public:
     static void _register_methods();
