@@ -23,6 +23,12 @@ void Candy::_ready() {
     this->connect("body_shape_entered", this, "_on_body_entered");
     Node *node = get_node("/root/Spatial/GUI/HBoxContainer/Counters/Counter/Background/Number");
     this->connect("candy_hit", node, "_increment");
+
+    // node = get_node(((String)get_parent()->get_path()).operator+("/AudioStreamPlayer"));
+    // Godot::print(node->get_path());
+    node = get_node("/root/Spatial/Spatial/AudioStreamPlayer");
+    this->connect("candy_hit", node, "_candy");
+    // Godot::print(get_parent()->get_path() + "/AudioStreamPlayer");
 }
 
 

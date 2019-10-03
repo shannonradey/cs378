@@ -35,15 +35,21 @@ void Player::_fixed_process(float delta) {
     if (input->is_action_pressed("ui_down")) {
         velocity += get_global_transform().basis.z.rotated(Vector3(0, 1, 0), -M_PI/2); 
 
-    } if (input->is_action_pressed("ui_up")) {
+    }
+    if (input->is_action_pressed("ui_up")) {
         velocity += get_global_transform().basis.z.rotated(Vector3(0, 1, 0), M_PI/2);
 
-    } if (input->is_action_pressed("ui_left")) {
+    }
+    if (input->is_action_pressed("ui_left")) {
         rotate_y(0.01);
 
-    } if (input->is_action_pressed("ui_right")) {
+    }
+    if (input->is_action_pressed("ui_right")) {
         rotate_y(-0.01);
     } 
+    if (input->is_action_pressed("ui_accept")) {
+        velocity.y += 1;
+    }
     velocity.y -= gravity * delta;
 	KinematicCollision *collision = *move_and_collide(velocity);
     // if (collision != NULL)
