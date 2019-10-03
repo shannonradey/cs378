@@ -21,7 +21,8 @@ Candy::~Candy() {
 
 void Candy::_ready() {
     this->connect("body_shape_entered", this, "_on_body_entered");
-    // Godot::print(get_path());
+    Node *node = get_node("/root/Spatial/GUI/HBoxContainer/Counters/Counter/Background/Number");
+    this->connect("candy_hit", node, "_increment");
 }
 
 
