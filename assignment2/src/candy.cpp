@@ -26,8 +26,11 @@ void Candy::_ready() {
 
 
 void Candy::_on_body_entered(int body_id, Node *body, int body_shape, int area_shape) {
-    emit_signal("candy_hit");
-    
+    if (is_visible()) {
+        emit_signal("candy_hit");
+        set_visible(false);
+        time_hit = time(NULL);
+    }
 }
 
 
@@ -36,4 +39,10 @@ void Candy::_init() {
 
 void Candy::_process(float delta) {
     rotate_y(.1);
+    if (!is_visible()) {
+        if (time(NULL) - 10 > time_hit) {
+            set_visible(true);
+        }
+
+    }
 }

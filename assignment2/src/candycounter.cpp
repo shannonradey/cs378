@@ -17,17 +17,34 @@ CandyCounter::~CandyCounter() {
 }
 
 void CandyCounter::_ready() {
-    Node *node = get_node("/root/Spatial/Spatial2/Area");
+    // Node *node = get_node("/root/Spatial/Spatial2/Area");
+    // node->connect("candy_hit", this, "_increment");
+
+    Node *node = get_node("/root/Spatial/CandyA1/Area");
     node->connect("candy_hit", this, "_increment");
-    
-    node = get_node("/root/Spatial/Spatial3/Area");
-    
+    node = get_node("/root/Spatial/CandyA2/Area");
     node->connect("candy_hit", this, "_increment");
+    node = get_node("/root/Spatial/CandyA3/Area");
+    node->connect("candy_hit", this, "_increment");
+    node = get_node("/root/Spatial/CandyB1/Area");
+    node->connect("candy_hit", this, "_increment");
+    node = get_node("/root/Spatial/CandyB2/Area");
+    node->connect("candy_hit", this, "_increment");
+    node = get_node("/root/Spatial/CandyB3/Area");
+    node->connect("candy_hit", this, "_increment");
+    node = get_node("/root/Spatial/CandyC1/Area");
+    node->connect("candy_hit", this, "_increment");
+    node = get_node("/root/Spatial/CandyC2/Area");
+    node->connect("candy_hit", this, "_increment");
+    node = get_node("/root/Spatial/CandyC3/Area");
+    node->connect("candy_hit", this, "_increment");
+
+    
 
 }
 
 void CandyCounter::_init() {
-    candy_count = 0;
+    candy_count = -2;
     set_text(String::num_int64(candy_count));
 }
 
