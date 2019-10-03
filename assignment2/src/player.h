@@ -19,6 +19,7 @@ private:
     Vector3 velocity;
     Input *input;
     int x;
+    float gravity;
 
 public:
     static void _register_methods();

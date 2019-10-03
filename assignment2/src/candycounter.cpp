@@ -6,7 +6,6 @@ void CandyCounter::_register_methods() {
     register_method("_ready", &CandyCounter::_ready);
     register_method("_increment", &CandyCounter::_increment);
     register_method("get_count", &CandyCounter::get_count);
-    register_signal<CandyCounter>((char*)"candy_hit");
 }
 
 CandyCounter::CandyCounter() {
@@ -18,7 +17,13 @@ CandyCounter::~CandyCounter() {
 }
 
 void CandyCounter::_ready() {
-    this->connect("candy_hit", this, "increment");
+    Node *node = get_node("/root/Spatial/Spatial2/Area");
+    node->connect("candy_hit", this, "_increment");
+    
+    node = get_node("/root/Spatial/Spatial3/Area");
+    
+    node->connect("candy_hit", this, "_increment");
+
 }
 
 void CandyCounter::_init() {
@@ -27,9 +32,7 @@ void CandyCounter::_init() {
 }
 
 void CandyCounter::_increment() {
-    Godot::print("Increment");
-    ++candy_count;
-    set_text(String::num_int64(candy_count));
+    set_text(String::num_int64(++candy_count));
 }
 
 int CandyCounter::get_count() {

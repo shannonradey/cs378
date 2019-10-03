@@ -22,7 +22,7 @@ void Player::_init() {
     velocity = Vector3(0, 0, 0);
     input = Input::get_singleton();
     x = 0;
-    CandyCounter candycounter = CandyCounter();
+    gravity = 9.8;
 }
 
 void Player::_input(Variant input) {
@@ -44,6 +44,7 @@ void Player::_fixed_process(float delta) {
     } if (input->is_action_pressed("ui_right")) {
         rotate_y(-0.01);
     } 
+    velocity.y -= gravity * delta;
 	KinematicCollision *collision = *move_and_collide(velocity);
     // if (collision != NULL)
     //     Godot::print(collision->get_collider_id());
