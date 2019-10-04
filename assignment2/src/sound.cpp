@@ -24,6 +24,5 @@ void Sound::_init() {
 }
 
 void Sound::_candy() {
-	Godot::print("CANDY");
 	play();
 }

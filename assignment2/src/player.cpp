@@ -31,24 +31,26 @@ void Player::_input(Variant input) {
 
 void Player::_fixed_process(float delta) {
     velocity = Vector3(0, 0, 0);
+    Vector3 cur;
 
     if (input->is_action_pressed("ui_down")) {
-        velocity += get_global_transform().basis.z.rotated(Vector3(0, 1, 0), -M_PI/2); 
-
+        cur = get_global_transform().basis.z; 
+        cur.y = 0;
+        velocity += cur.rotated(Vector3(0, 1, 0), -M_PI/2);
     }
     if (input->is_action_pressed("ui_up")) {
-        velocity += get_global_transform().basis.z.rotated(Vector3(0, 1, 0), M_PI/2);
-
+        cur = get_global_transform().basis.z;
+        cur.y = 0;
+        velocity += cur.rotated(Vector3(0, 1, 0), M_PI/2);
     }
     if (input->is_action_pressed("ui_left")) {
         rotate_y(0.01);
-
     }
     if (input->is_action_pressed("ui_right")) {
         rotate_y(-0.01);
     } 
     if (input->is_action_pressed("ui_accept")) {
-        velocity.y += 1;
+        velocity.y += .7;
     }
     velocity.y -= gravity * delta;
 	KinematicCollision *collision = *move_and_collide(velocity);
