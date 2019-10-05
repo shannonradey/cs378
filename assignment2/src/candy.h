@@ -5,6 +5,7 @@
 #include <Area.hpp>
 #include <candycounter.h>
 #include <player.h>
+#include <ctime>
 
 namespace godot {
 
@@ -12,7 +13,8 @@ class Candy : public Area {
     GODOT_CLASS(Candy, Area)
 
 private:
-    float time_passed;
+    time_t time_hit;
+
 
 public:
     static void _register_methods();
