@@ -16,7 +16,7 @@ Sound::~Sound() {
 }
 
 void Sound::_ready() {    
-	// Godot::print("Sound" + get_path());
+	
 }
 
 void Sound::_init() {

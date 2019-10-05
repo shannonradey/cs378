@@ -25,7 +25,7 @@ void Healthbar::_ready() {
 	// get_value();
 	// Godot::print(get_fill_degrees());
 	// set_fill_degrees(100);
-	Godot::print(get_path());
+	// Godot::print(get_path());
 }
 
 void Healthbar::_init() {

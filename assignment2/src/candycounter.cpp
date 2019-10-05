@@ -21,7 +21,7 @@ void CandyCounter::_ready() {
 }
 
 void CandyCounter::_init() {
-    candy_count = -2;
+    candy_count = -1;
     set_text(String::num_int64(candy_count));
 }
 
