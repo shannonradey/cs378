@@ -29,4 +29,5 @@ void MyButton::_init() {
 
 void MyButton::mute() {
 	emit_signal("mute");
+    release_focus();
 }
