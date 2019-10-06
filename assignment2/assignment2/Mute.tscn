@@ -13,6 +13,7 @@ margin_top = 529.0
 margin_right = 542.0
 margin_bottom = 1047.0
 rect_scale = Vector2( 0.1, 0.1 )
+shortcut_in_tooltip = false
 action_mode = 0
 icon = ExtResource( 1 )
 script = ExtResource( 2 )
