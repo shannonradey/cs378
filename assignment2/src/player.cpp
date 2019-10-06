@@ -51,7 +51,7 @@ void Player::_fixed_process(float delta) {
     if (input->is_action_pressed("ui_right")) {
         rotate_y(-0.02);
     } 
-        if (input->is_action_pressed("ui_accept") && player_can_jump) {
+        if (input->is_action_just_pressed("ui_accept")) {
         velocity.y += 2;
         t = time(NULL);
     }

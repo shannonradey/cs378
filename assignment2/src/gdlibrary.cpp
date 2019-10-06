@@ -4,6 +4,7 @@
 #include "sound.h"
 #include "attacklight.h"
 #include "healthbar.h"
+#include "mybutton.h"
 
 extern "C" void GDN_EXPORT godot_gdnative_init(godot_gdnative_init_options *o) {
     godot::Godot::gdnative_init(o);
@@ -21,4 +22,5 @@ extern "C" void GDN_EXPORT godot_nativescript_init(void *handle) {
     godot::register_class<godot::Sound>();
     godot::register_class<godot::AttackLight>();
     godot::register_class<godot::Healthbar>();
+    godot::register_class<godot::MyButton>();
 }

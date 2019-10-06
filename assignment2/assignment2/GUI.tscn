@@ -23,20 +23,20 @@ font_data = ExtResource( 2 )
 anchor_right = 1.0
 margin_left = 20.0
 margin_top = 20.0
-margin_right = 20.0
+margin_right = -24.0
 margin_bottom = 73.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_right = 1024.0
+margin_right = 980.0
 margin_bottom = 53.0
 
 [node name="Bars" type="VBoxContainer" parent="HBoxContainer"]
-margin_right = 935.0
+margin_right = 891.0
 margin_bottom = 53.0
 size_flags_horizontal = 3
 
 [node name="Bar" type="HBoxContainer" parent="HBoxContainer/Bars"]
-margin_right = 935.0
+margin_right = 891.0
 margin_bottom = 53.0
 
 [node name="Count" type="MarginContainer" parent="HBoxContainer/Bars/Bar"]
@@ -78,8 +78,8 @@ stream = ExtResource( 8 )
 script = ExtResource( 7 )
 
 [node name="Counters" type="HBoxContainer" parent="HBoxContainer"]
-margin_left = 939.0
-margin_right = 1024.0
+margin_left = 895.0
+margin_right = 980.0
 margin_bottom = 53.0
 
 [node name="Counter" type="MarginContainer" parent="HBoxContainer/Counters"]
