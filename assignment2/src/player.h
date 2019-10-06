@@ -6,6 +6,7 @@
 #include <Input.hpp>
 #include <KinematicCollision.hpp>
 #include <cmath>
+#include <ctime>
 
 namespace godot {
 
@@ -18,6 +19,7 @@ private:
     Input *input;
     int x;
     float gravity;
+    time_t t;
 
 public:
     static void _register_methods();

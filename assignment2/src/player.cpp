@@ -21,6 +21,7 @@ void Player::_init() {
     input = Input::get_singleton();
     x = 0;
     gravity = 9.8;
+    t = time(NULL);
 }
 
 void Player::_input(Variant input) {
@@ -30,15 +31,19 @@ void Player::_fixed_process(float delta) {
     velocity = Vector3(0, 0, 0);
     Vector3 cur;
 
+    bool player_can_jump = false;
+    if (time(NULL) - 1 > t)
+        player_can_jump = true;
+
     if (input->is_action_pressed("ui_down")) {
         cur = get_global_transform().basis.z; 
         cur.y = 0;
-        velocity += cur.rotated(Vector3(0, 1, 0), -M_PI/2).operator*=(8);
+        velocity += cur.rotated(Vector3(0, 1, 0), -M_PI/2);
     }
     if (input->is_action_pressed("ui_up")) {
         cur = get_global_transform().basis.z;
         cur.y = 0;
-        velocity += cur.rotated(Vector3(0, 1, 0), M_PI/2).operator*=(8);
+        velocity += cur.rotated(Vector3(0, 1, 0), M_PI/2);
     }
     if (input->is_action_pressed("ui_left")) {
         rotate_y(0.02);
@@ -46,12 +51,14 @@ void Player::_fixed_process(float delta) {
     if (input->is_action_pressed("ui_right")) {
         rotate_y(-0.02);
     } 
-    move_and_slide(velocity, Vector3(0, 1, 0));
-    if (input->is_action_pressed("ui_accept") && is_on_floor()) {
-        velocity.y += 5;
+        if (input->is_action_pressed("ui_accept") && player_can_jump) {
+        velocity.y += 2;
+        t = time(NULL);
     }
+    if (input->is_key_pressed(39))
+        velocity.y += .7;
     velocity.y -= gravity * delta;
-    move_and_slide(velocity);
+    move_and_collide(velocity);
 	
 }
 
