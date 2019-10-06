@@ -12,7 +12,6 @@ Sound::Sound() {
 }
 
 Sound::~Sound() {
-    // add your cleanup here
 }
 
 void Sound::_ready() {    

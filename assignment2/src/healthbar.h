@@ -3,7 +3,7 @@
 
 #include <Godot.hpp>
 #include <TextureProgress.hpp>
-#include <Range.hpp>
+#include <unistd.h>
 
 namespace godot {
 
@@ -22,13 +22,10 @@ public:
 
     void _ready();
 
-    void _init(); // our initializer called by Godot
+    void _init();
 
     void _decrement();
 
-    // void _process(float delta);
-
-    // void _on_body_entered(int body_id, Node *body, int body_shape, int area_shape);
 };
 
 }

@@ -11,6 +11,7 @@ material = SubResource( 1 )
 [node name="Spatial" type="Spatial"]
 
 [node name="StaticBody" type="StaticBody" parent="."]
+constant_linear_velocity = Vector3( 0, 1, 0 )
 
 [node name="CSGMesh" type="CSGMesh" parent="StaticBody"]
 transform = Transform( 30, 0, 0, 0, 0.1, 0, 0, 0, 30, 0, 0, 0 )

@@ -13,11 +13,9 @@ Player::Player() {
 }
 
 Player::~Player() {
-    // add your cleanup here
 }
 
 void Player::_init() {
-    // initialize any variables here
     time_passed = 0.0;
     velocity = Vector3(0, 0, 0);
     input = Input::get_singleton();
@@ -26,7 +24,6 @@ void Player::_init() {
 }
 
 void Player::_input(Variant input) {
-    // event = (InputEvent) input;
 }
 
 void Player::_fixed_process(float delta) {
@@ -36,26 +33,26 @@ void Player::_fixed_process(float delta) {
     if (input->is_action_pressed("ui_down")) {
         cur = get_global_transform().basis.z; 
         cur.y = 0;
-        velocity += cur.rotated(Vector3(0, 1, 0), -M_PI/2);
+        velocity += cur.rotated(Vector3(0, 1, 0), -M_PI/2).operator*=(8);
     }
     if (input->is_action_pressed("ui_up")) {
         cur = get_global_transform().basis.z;
         cur.y = 0;
-        velocity += cur.rotated(Vector3(0, 1, 0), M_PI/2);
+        velocity += cur.rotated(Vector3(0, 1, 0), M_PI/2).operator*=(8);
     }
     if (input->is_action_pressed("ui_left")) {
-        rotate_y(0.01);
+        rotate_y(0.02);
     }
     if (input->is_action_pressed("ui_right")) {
-        rotate_y(-0.01);
+        rotate_y(-0.02);
     } 
-    if (input->is_action_pressed("ui_accept")) {
-        velocity.y += .7;
+    move_and_slide(velocity, Vector3(0, 1, 0));
+    if (input->is_action_pressed("ui_accept") && is_on_floor()) {
+        velocity.y += 5;
     }
     velocity.y -= gravity * delta;
-	KinematicCollision *collision = *move_and_collide(velocity);
-    // if (collision != NULL)
-    //     Godot::print(collision->get_collider_id());
+    move_and_slide(velocity);
+	
 }
 
 void Player::move() {

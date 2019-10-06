@@ -1,8 +1,6 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://bin/attacklight.gdns" type="Script" id=1]
-[ext_resource path="res://392183__dexus5__negative.wav" type="AudioStream" id=2]
-[ext_resource path="res://bin/sound.gdns" type="Script" id=3]
 
 [sub_resource type="CylinderShape" id=1]
 
@@ -21,7 +19,3 @@ script = ExtResource( 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="SpotLight/Area"]
 shape = SubResource( 1 )
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 2 )
-script = ExtResource( 3 )
