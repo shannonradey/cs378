@@ -42,7 +42,7 @@ void Candy::_on_body_entered(int body_id, Node *body, int body_shape, int area_s
      String name = get_parent()->get_parent()->get_name();
      String ledge = name;
 
-     if ((name == "Ledge") || (name == "Ledge2") || (name == "Ledge3") || (name == "Ledge4")){
+     if ((name == "Ledge") || (name == "Ledge1A") || (name == "Ledge2") || (name == "Ledge3") || (name == "Ledge4")){
 
         emit_signal("ledge_hit", ledge);
 

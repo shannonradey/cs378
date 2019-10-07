@@ -43,7 +43,7 @@ void Player::_fixed_process(float delta) {
     if (is_hanging == true) {
         Vector3 rotation = get_rotation();
         gravity = 0.0;
-        if (edge == "Ledge") {
+        if ((edge == "Ledge") || (edge == "Ledge1A")) {
             set_rotation(Vector3(0, rotation.y,-0.2));
             if (input->is_action_pressed("k_up")) {
                 velocity.z -= 2;
