@@ -10,6 +10,7 @@ class Sound : public AudioStreamPlayer {
     GODOT_CLASS(Sound, AudioStreamPlayer)
 
 private:
+	bool is_muted;
 
 public:
     static void _register_methods();
@@ -17,10 +18,12 @@ public:
     Sound();
     ~Sound();
 
-    void _init(); // our initializer called by Godot
+    void _init();
 
     void _ready();
     void _candy();
+
+    void _mute();
 
 
 };

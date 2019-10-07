@@ -16,16 +16,12 @@ AttackLight::AttackLight() {
 }
 
 AttackLight::~AttackLight() {
-    // add your cleanup here
 }
 
 void AttackLight::_ready() {
     this->connect("body_shape_entered", this, "_on_body_entered");
     Node *node = get_node("/root/Spatial/GUI/HBoxContainer/Bars/Bar/Gauge");
     this->connect("light_hit", node, "_decrement");
-
-    node = get_parent()->get_parent()->get_child(1);
-    this->connect("light_hit", node, "_candy");
 }
 
 

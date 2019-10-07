@@ -13,7 +13,6 @@ CandyCounter::CandyCounter() {
 }
 
 CandyCounter::~CandyCounter() {
-    // add your cleanup here
 }
 
 void CandyCounter::_ready() {    
@@ -21,7 +20,7 @@ void CandyCounter::_ready() {
 }
 
 void CandyCounter::_init() {
-    candy_count = -1;
+    candy_count = 0;
     set_text(String::num_int64(candy_count));
 }
 

@@ -27,13 +27,15 @@ private:
     //int jumps;
     //int MAX_JUMPS;
 
+
+
 public:
     static void _register_methods();
 
     Player();
     ~Player();
 
-    void _init(); // our initializer called by Godot
+    void _init();
 
     void _fixed_process(float delta);
 

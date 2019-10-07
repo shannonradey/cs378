@@ -22,7 +22,7 @@ public:
     CandyCounter();
     ~CandyCounter();
 
-    void _init(); // our initializer called by Godot
+    void _init();
 
     void _ready();
     void _increment();

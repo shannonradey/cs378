@@ -21,7 +21,7 @@ public:
 
     void _ready();
 
-    void _init(); // our initializer called by Godot
+    void _init();
 
     void _process(float delta);
 
