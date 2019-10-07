@@ -26,7 +26,8 @@ void Candy::_ready() {
     this->connect("candy_hit", node, "_increment");
     node = get_node("/root/Spatial/Spatial/AudioStreamPlayer");
     this->connect("candy_hit", node, "_candy");
-
+    node = get_node("/root/Spatial/Control2/NinePatchRect/Label2");
+    this->connect("candy_hit", node, "_increment");
 
     node = get_node("/root/Spatial/Player");
     this->connect("ledge_hit", node, "_hang");
@@ -39,19 +40,20 @@ void Candy::_ready() {
 
 void Candy::_on_body_entered(int body_id, Node *body, int body_shape, int area_shape) {
 
-     String name = get_parent()->get_parent()->get_name();
-     String ledge = name;
+    String name = get_parent()->get_parent()->get_name();
+    String ledge = name;
 
-     if ((name == "Ledge") || (name == "Ledge1A") || (name == "Ledge2") || (name == "Ledge3") || (name == "Ledge4")){
+    if ((name == "Ledge") || (name == "Ledge1A") || (name == "Ledge2") || (name == "Ledge3") || (name == "Ledge4")){
 
         emit_signal("ledge_hit", ledge);
 
-     }
-
-    if (is_visible()) {
-        emit_signal("candy_hit");
-        set_visible(false);
-        time_hit = time(NULL);
+    }
+    else {
+        if (is_visible()) {
+            emit_signal("candy_hit");
+            set_visible(false);
+            time_hit = time(NULL);
+        }
     }
 }
 
