@@ -24,6 +24,7 @@ private:
     int speed;
     bool is_hanging;
     String edge;
+    time_t t;
     //int jumps;
     //int MAX_JUMPS;
 

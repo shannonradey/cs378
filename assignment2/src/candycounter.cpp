@@ -6,6 +6,8 @@ void CandyCounter::_register_methods() {
     register_method("_ready", &CandyCounter::_ready);
     register_method("_increment", &CandyCounter::_increment);
     register_method("get_count", &CandyCounter::get_count);
+    register_method("final", &CandyCounter::final);
+    register_method("stop", &CandyCounter::stop);
 }
 
 CandyCounter::CandyCounter() {
@@ -16,7 +18,10 @@ CandyCounter::~CandyCounter() {
 }
 
 void CandyCounter::_ready() {    
-
+	if (get_path() == "/root/Spatial/Control2/NinePatchRect/Label2") {
+		((CanvasItem *)get_parent()->get_parent())->set_visible(false);
+	}
+	dead = false;
 }
 
 void CandyCounter::_init() {
@@ -25,9 +30,19 @@ void CandyCounter::_init() {
 }
 
 void CandyCounter::_increment() {
-    set_text(String::num_int64(++candy_count));
+	if (!dead)
+    	set_text(String::num_int64(++candy_count));
 }
 
 int CandyCounter::get_count() {
     return candy_count;
+}
+
+void CandyCounter::stop() {
+	dead = true;
+}
+
+void CandyCounter::final() {
+	((CanvasItem *)get_parent()->get_parent())->set_visible(true);
+	dead = true;
 }

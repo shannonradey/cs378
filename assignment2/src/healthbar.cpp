@@ -21,7 +21,10 @@ void Healthbar::_ready() {
 	this->connect("dead", node, "_candy");
 	node = get_parent()->get_child(3);
 	this->connect("light_hit", node, "_candy");
-
+    node = get_node("/root/Spatial/Control2/NinePatchRect/Label2");
+    this->connect("dead", node, "final");
+    node = get_node("/root/Spatial/GUI/HBoxContainer/Counters/Counter/Background/Number");
+    this->connect("dead", node, "stop");
 }
 
 void Healthbar::_init() {

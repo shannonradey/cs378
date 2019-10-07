@@ -15,29 +15,15 @@ Player::~Player() {
 }
 
 void Player::_init() {
-<<<<<<< HEAD
-    // initialize any variables here
     gravity = 9.8;
-=======
->>>>>>> 2d9c141ba1ab693082c82dcfad3bf9465af141c9
     time_passed = 0.0;
     velocity = Vector3(0, 0, 0);
     input = Input::get_singleton();
     x = 0;
-<<<<<<< HEAD
     is_hanging = false;
     edge = "";
-}
-
-
-=======
-    gravity = 9.8;
     t = time(NULL);
 }
-
-void Player::_input(Variant input) {
-}
->>>>>>> 2d9c141ba1ab693082c82dcfad3bf9465af141c9
 
 void Player::_fixed_process(float delta) {
     velocity = Vector3(0, 0, 0);
@@ -45,7 +31,6 @@ void Player::_fixed_process(float delta) {
     Vector3 floor_normal = Vector3(0, 1, 0);
 
 
-<<<<<<< HEAD
     if (is_hanging == true){
         gravity = 0.0;
         if (edge == "Ledge"){
@@ -114,12 +99,7 @@ void Player::_fixed_process(float delta) {
         }
 
     }
-=======
-    bool player_can_jump = false;
-    if (time(NULL) - 1 > t)
-        player_can_jump = true;
 
->>>>>>> 2d9c141ba1ab693082c82dcfad3bf9465af141c9
     if (input->is_action_pressed("ui_down")) {
         cur = get_global_transform().basis.z; 
         cur.y = 0;
@@ -136,28 +116,14 @@ void Player::_fixed_process(float delta) {
     if (input->is_action_pressed("ui_right")) {
         rotate_y(-0.02);
     } 
-<<<<<<< HEAD
-    
     if (input->is_action_just_pressed("ui_accept")) {
-        velocity.y += 1;
-=======
-        if (input->is_action_just_pressed("ui_accept")) {
         velocity.y += 2;
         t = time(NULL);
->>>>>>> 2d9c141ba1ab693082c82dcfad3bf9465af141c9
     }
     if (input->is_key_pressed(39))
         velocity.y += .7;
     velocity.y -= gravity * delta;
-<<<<<<< HEAD
 	move_and_collide(velocity);
-
-   //Godot::print(get_translation());
-
-=======
-    move_and_collide(velocity);
-	
->>>>>>> 2d9c141ba1ab693082c82dcfad3bf9465af141c9
 }
    
 

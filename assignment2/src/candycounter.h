@@ -7,6 +7,7 @@
 #include <string>
 #include <String.hpp>
 #include <candy.h>
+#include <CanvasItem.hpp>
 
 namespace godot {
 
@@ -15,6 +16,7 @@ class CandyCounter : public Label {
 
 private:
     int candy_count;
+    bool dead;
 
 public:
     static void _register_methods();
@@ -27,6 +29,10 @@ public:
     void _ready();
     void _increment();
     int get_count();
+
+    void final();
+
+    void stop();
 
 
 };
