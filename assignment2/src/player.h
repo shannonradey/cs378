@@ -41,6 +41,7 @@ public:
     void _fixed_process(float delta);
 
     void _hang(String led);
+    void _ready();
 };
 
 }

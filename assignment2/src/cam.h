@@ -4,6 +4,7 @@
 #include <Godot.hpp>
 #include <Input.hpp>
 #include <cmath>
+#include <Input.hpp>
 #include <Camera.hpp>
 
 namespace godot {
@@ -14,6 +15,7 @@ class Cam : public Camera {
 private:
     //int jumps;
     //int MAX_JUMPS;
+    Input *input;
 
 public:
     static void _register_methods();
