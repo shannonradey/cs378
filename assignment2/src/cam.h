@@ -3,7 +3,6 @@
 
 #include <Godot.hpp>
 #include <Input.hpp>
-#include <cmath>
 #include <Input.hpp>
 #include <Camera.hpp>
 
@@ -26,6 +25,7 @@ public:
     void _init(); // our initializer called by Godot
 
     void _process(float delta);
+    void _ready();
     
 };
 

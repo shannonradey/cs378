@@ -56,17 +56,14 @@ shape = SubResource( 7 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 shape = SubResource( 8 )
 
-[node name="SpringArm" type="SpringArm" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.87423, 2, 0.245767 )
-
-[node name="Camera" type="Camera" parent="SpringArm"]
-transform = Transform( 0.203111, 0, -0.979156, 0, 1, 0, 0.979156, 0, 0.203111, -1.87404, 0, 21.0536 )
-fov = 84.375
-script = ExtResource( 2 )
-
 [node name="Area" type="Area" parent="."]
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.475867, 0 )
 shape = SubResource( 9 )
 
+[node name="Spatial" type="Spatial" parent="."]
+
+[node name="Camera" type="Camera" parent="Spatial"]
+transform = Transform( 0, 0, -1, 0, 1, 0, 1, 0, 0, -7, 3, 0 )
+script = ExtResource( 2 )
