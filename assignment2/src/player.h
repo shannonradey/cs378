@@ -8,6 +8,7 @@
 #include <cmath>
 #include <Transform.hpp>
 #include <candycounter.h>
+#include <ctime>
 
 namespace godot {
 
@@ -20,6 +21,11 @@ private:
     Input *input;
     int x;
     float gravity;
+    int speed;
+    bool is_hanging;
+    String edge;
+    //int jumps;
+    //int MAX_JUMPS;
 
 public:
     static void _register_methods();
@@ -30,9 +36,8 @@ public:
     void _init(); // our initializer called by Godot
 
     void _fixed_process(float delta);
-    void _input(Variant input);
 
-    void move();
+    void _hang(String led);
 };
 
 }

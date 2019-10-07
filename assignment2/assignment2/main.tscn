@@ -105,7 +105,7 @@ transform = Transform( 0.000194719, 0.00577372, 0.999984, 0.0630739, 0.997992, -
 margin_right = -21.0
 
 [node name="Player" parent="." instance=ExtResource( 11 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17.9987, 1, 11.967 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.3953, 1.1, 15 )
 
 [node name="OmniLight" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -92.3465, 86.4605, 22.6212 )
@@ -118,8 +118,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.73905, 0, -54.6354 )
 
 [node name="Node2D" parent="." instance=ExtResource( 13 )]
 
-<<<<<<< HEAD
-=======
 [node name="Spatial" parent="." instance=ExtResource( 14 )]
 
 [node name="Spatial2" parent="." instance=ExtResource( 15 )]
@@ -133,4 +131,4 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -22 )
 
 [node name="Spatial5" parent="." instance=ExtResource( 15 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, -58 )
->>>>>>> c85f9aa89279fba31f111dae0eb5d460c07c490b
+

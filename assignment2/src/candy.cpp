@@ -8,6 +8,7 @@ void Candy::_register_methods() {
     register_method("_on_body_entered", &Candy::_on_body_entered);
     
 	register_signal<Candy>((char*)"candy_hit");
+    register_signal<Candy>((char*)"ledge_hit");
 
 }
 
@@ -28,11 +29,27 @@ void Candy::_ready() {
     // Godot::print(node->get_path());
     node = get_node("/root/Spatial/Spatial/AudioStreamPlayer");
     this->connect("candy_hit", node, "_candy");
+
+
+    node = get_node("/root/Spatial/Player");
+    this->connect("ledge_hit", node, "_hang");
+
+
     // Godot::print(get_parent()->get_path() + "/AudioStreamPlayer");
 }
 
 
 void Candy::_on_body_entered(int body_id, Node *body, int body_shape, int area_shape) {
+
+     String name = get_parent()->get_parent()->get_name();
+     String ledge = name;
+
+     if ((name == "Ledge") || (name == "Ledge2") || (name == "Ledge3") || (name == "Ledge4")){
+
+        emit_signal("ledge_hit", ledge);
+
+     }
+
     if (is_visible()) {
         emit_signal("candy_hit");
         set_visible(false);
