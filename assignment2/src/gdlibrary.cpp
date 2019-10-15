@@ -7,6 +7,7 @@
 #include "cam.h"
 #include "watch.h"
 #include "mybutton.h"
+#include "menu.h"
 
 extern "C" void GDN_EXPORT godot_gdnative_init(godot_gdnative_init_options *o) {
     godot::Godot::gdnative_init(o);
@@ -28,4 +29,5 @@ extern "C" void GDN_EXPORT godot_nativescript_init(void *handle) {
     godot::register_class<godot::Cam>();
     godot::register_class<godot::MyButton>();
     godot::register_class<godot::Watch>();
+    godot::register_class<godot::Menu>();
 }
