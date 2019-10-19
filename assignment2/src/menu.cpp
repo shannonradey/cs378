@@ -7,15 +7,19 @@
 
 using namespace godot;
 
-void Menu::_register_methods()
-{
+void Menu::_register_methods(){
     register_method("_init", &Menu::_init, GODOT_METHOD_RPC_MODE_DISABLED);
     register_method("_on_TextField_text_changed", &Menu::_on_TextField_text_changed, GODOT_METHOD_RPC_MODE_DISABLED);
     register_method("_load_game", &Menu::_load_game, GODOT_METHOD_RPC_MODE_DISABLED);
     register_method("_on_CreateButton_pressed", &Menu::_on_CreateButton_pressed, GODOT_METHOD_RPC_MODE_DISABLED);
     register_method("_on_JoinButton_pressed", &Menu::_on_JoinButton_pressed, GODOT_METHOD_RPC_MODE_DISABLED);
-
+    register_method("_ready", &Menu::_ready);
+    // register_method("_process", &Menu::_process);
+    register_method("join", &Menu::join);
+    register_method("create", &Menu::create);
+    register_method("text_changed", &Menu::text_changed);
     register_property<Menu, String>("playerName", &Menu::playerName, "", GODOT_METHOD_RPC_MODE_DISABLED);
+    register_signal<Menu>((char*)"dead");
 }
 
 Menu::Menu(){};
@@ -23,6 +27,7 @@ Menu::~Menu(){};
 
 void Menu::_init()
 {
+    set_visible(true);
     playerName = "";
 }
 
@@ -37,9 +42,14 @@ void Menu::_on_CreateButton_pressed()
     {
         return;
     }
+    // get_node("/root/Network")->call("create_server", playerName);
+    // _load_game();
+    this->create();
+}
 
-    get_node("/root/Network")->call("create_server", playerName);
-    _load_game();
+void Menu::text_changed() {
+     playerName = get_child(3)->call("get_text");
+    // Godot::print(playerName);
 }
 
 void Menu::_on_JoinButton_pressed()
@@ -48,9 +58,18 @@ void Menu::_on_JoinButton_pressed()
     {
         return;
     }
+    // get_node("/root/Network")->call("connect_to_server", playerName);
+    // _load_game();
+    this->join();
+}
 
-    get_node("/root/Network")->call("connect_to_server", playerName);
-    _load_game();
+void Menu::_ready() {    
+    playerName = "";
+    get_child(4)->connect("pressed", this, "create");
+    get_child(5)->connect("pressed", this, "join");
+    get_child(3)->connect("text_changed", this, "text_changed");
+    Node* node = get_node("/root/Spatial/Control2/NinePatchRect/Label2");
+    this->connect("dead", node, "final");
 }
 
 void Menu::_load_game()
@@ -58,44 +77,16 @@ void Menu::_load_game()
     get_tree()->change_scene("res://main.tscn");
 }
 
-// using namespace godot;
+void Menu::join() {
+    Godot::print("JOIN");
+    get_node("/root/Spatial/Network")->call("connect_to_server", playerName);
+    _load_game();
+}
 
-// void Menu::_register_methods() {
-//     register_method("_ready", &Menu::_ready);
-//     register_method("_process", &Menu::_process);
+void Menu::create() {
+    Godot::print("CREATE");
+    get_node("/root/Spatial/Network")->call("create_server", playerName);
+    _load_game();
+}
 
-//     //register_signal<Menu>((char*)"dead");
-// }
 
-// Menu::Menu() {
-// }
-
-// Menu::~Menu() {
-// }
-
-// void Menu::_ready() {    
-//    // Node* node = get_node("/root/Spatial/Control2/NinePatchRect/Label2");
-//     //this->connect("dead", node, "final");
-// }
-
-// void Menu::_init() {
-//     set_visible(true);
-//     //t = time(NULL);
-   
-// }
-
-// void Menu::_process(float delta) {
-
-//     /*Node* node = get_node("/root/Spatial/Control4/TextureButton");
-//     if (node != NULL){
-//         BaseButton * button = node->cast_to<BaseButton>;
-//     }*/
-//     //Godot::print(node->is_pressed());
-//    /* if (node->_pressed()){
-//         //emit_signal("pressed");
-//         set_visible(false);
-//     }*/
-
-   
-    
-// }

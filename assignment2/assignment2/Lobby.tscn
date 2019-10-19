@@ -7,7 +7,6 @@
 [node name="Spatial" type="Spatial"]
 
 [node name="StaticBody" type="StaticBody" parent="."]
-editor/display_folded = true
 transform = Transform( 7, 0, 0, 0, 0.1, 0, 0, 0, 7, 0, 0, 0 )
 
 [node name="MeshInstance" type="MeshInstance" parent="StaticBody"]
@@ -18,7 +17,6 @@ material/0 = null
 shape = SubResource( 2 )
 
 [node name="StaticBody2" type="StaticBody" parent="."]
-editor/display_folded = true
 transform = Transform( 7, 0, 0, 0, 0.1, 0, 0, 0, 7, 0, 14, 0 )
 
 [node name="MeshInstance" type="MeshInstance" parent="StaticBody2"]
@@ -29,7 +27,6 @@ material/0 = null
 shape = SubResource( 2 )
 
 [node name="StaticBody3" type="StaticBody" parent="."]
-editor/display_folded = true
 transform = Transform( 0.1, 0, 0, 0, 7, 0, 0, 0, 7, 7, 7, 0 )
 
 [node name="MeshInstance" type="MeshInstance" parent="StaticBody3"]
@@ -40,7 +37,6 @@ material/0 = null
 shape = SubResource( 2 )
 
 [node name="StaticBody4" type="StaticBody" parent="."]
-editor/display_folded = true
 transform = Transform( 0.1, 0, 0, 0, 7, 0, 0, 0, 7, -7, 7, 0 )
 
 [node name="MeshInstance" type="MeshInstance" parent="StaticBody4"]
@@ -51,7 +47,6 @@ material/0 = null
 shape = SubResource( 2 )
 
 [node name="StaticBody5" type="StaticBody" parent="."]
-editor/display_folded = true
 transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 0.1, 0, 7, -7 )
 
 [node name="MeshInstance" type="MeshInstance" parent="StaticBody5"]
@@ -62,7 +57,6 @@ material/0 = null
 shape = SubResource( 2 )
 
 [node name="StaticBody6" type="StaticBody" parent="."]
-editor/display_folded = true
 transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 0.1, 0, 7, 7 )
 
 [node name="MeshInstance" type="MeshInstance" parent="StaticBody6"]

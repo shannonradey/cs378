@@ -22,6 +22,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 2, 0 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5 )
 
 [node name="SpotLight" type="SpotLight" parent="."]
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 0.0871558, 0.996195, 0, -0.996195, 0.0871558, 24, 15, -16 )
 light_energy = 7.46
 light_indirect_energy = 3.59
@@ -29,6 +30,7 @@ spot_range = 19.1301
 spot_angle = 17.5454
 
 [node name="Area" type="Area" parent="SpotLight"]
+editor/display_folded = true
 transform = Transform( 4, 0, 0, 0, 0.435779, -3.98478, 0, 4.98097, 0.348623, 0, 0.211796, -9.05291 )
 gravity_vec = Vector3( 0, 0, 0 )
 gravity = 0.0

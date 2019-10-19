@@ -20,7 +20,6 @@ MyButton::~MyButton() {
 
 
 void MyButton::_ready() {
-	// Godot::print(get_path());
     this->connect("pressed", this, "mute");
     Node *node = get_parent()->get_child(9)->get_child(0);
     this->connect("mute", node, "_mute");

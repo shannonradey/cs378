@@ -6,9 +6,7 @@ void Candy::_register_methods() {
     register_method("_process", &Candy::_process);
     register_method("_ready", &Candy::_ready);
     register_method("_on_body_entered", &Candy::_on_body_entered);
-    
-	register_signal<Candy>((char*)"candy_hit");
-    register_signal<Candy>((char*)"ledge_hit");
+
 
 }
 
@@ -22,16 +20,6 @@ Candy::~Candy() {
 
 void Candy::_ready() {
     this->connect("body_shape_entered", this, "_on_body_entered");
-    Node *node = get_node("/root/Spatial/GUI/HBoxContainer/Counters/Counter/Background/Number");
-    this->connect("candy_hit", node, "_increment");
-    node = get_node("/root/Spatial/Spatial/AudioStreamPlayer");
-    this->connect("candy_hit", node, "_candy");
-    node = get_node("/root/Spatial/Control2/NinePatchRect/Label2");
-    this->connect("candy_hit", node, "_increment");
-
-    node = get_node("/root/Spatial/Player");
-    this->connect("ledge_hit", node, "_hang");
-
 }
 
 
@@ -41,19 +29,16 @@ void Candy::_on_body_entered(int body_id, Node *body, int body_shape, int area_s
     String ledge = name;
 
     if ((name == "Ledge") || (name == "Ledge1A") || (name == "Ledge2") || (name == "Ledge3") || (name == "Ledge4")){
-        this->connect("ledge_hit", body, "_hang");
-        emit_signal("ledge_hit", ledge);
-
+        body->call("_hang");
     }
     else {
         if (is_visible()) {
             Node *counter = body->get_child(11)->get_child(0)->get_child(1)->get_child(0)->get_child(0)->get_child(1);
             Node *coin_noise = body->get_child(11)->get_child(0)->get_child(1)->get_child(0)->get_child(0)->get_child(2);
             Node *final = body->get_child(10)->get_child(0)->get_child(1);
-            this->connect("candy_hit", counter, "_increment");
-            this->connect("candy_hit", final, "_increment");
-            this->connect("candy_hit", coin_noise, "_play");
-            emit_signal("candy_hit");
+            counter->call("_increment");
+            final->call("_increment");
+            coin_noise->call("_play");
             set_visible(false);
             time_hit = time(NULL);
         }
