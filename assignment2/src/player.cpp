@@ -10,6 +10,7 @@ void Player::_register_methods() {
     register_method("_hang", &Player::_hang);
     register_method("_ready", &Player::_ready);
     register_method("init", &Player::init, GODOT_METHOD_RPC_MODE_DISABLED);
+    register_method("_die", &Player::_die);
     register_signal<Player>((char*)"dead");
 }
 
@@ -21,6 +22,7 @@ Player::~Player() {
 }
 
 void Player::_init() {
+    alive = true;
     gravity = 9.8;
     time_passed = 0.0;
     velocity = Vector3(0, 0, 0);
@@ -31,14 +33,19 @@ void Player::_init() {
     t = time(NULL);
 }
 
+void Player::_die() {
+    set_visible(false);
+    alive = false;
+}
+
 void Player::_ready() {
-    Node *node = get_node("/root/Spatial/Control2/NinePatchRect/Label2");
+    Node *node = this->get_child(10)->get_child(0)->get_child(1);
     this->connect("dead", node, "final");
-    node = get_node("/root/Spatial/GUI/HBoxContainer/Counters/Counter/Background/Number");
-    this->connect("dead", node, "stop");
 }
 
 void Player::_fixed_process(float delta) {
+    if (!alive)
+        return;
     velocity = Vector3(0, 0, 0);
     Vector3 cur;
     Vector3 floor_normal = Vector3(0, 1, 0);
@@ -60,6 +67,7 @@ void Player::_fixed_process(float delta) {
                 velocity.z += 2;
                 gravity =9.8;
                 is_hanging = false;
+                _die();
                 emit_signal("dead");
             }
         }
@@ -76,6 +84,7 @@ void Player::_fixed_process(float delta) {
                 velocity.x += 4;
                 gravity =9.8;
                 is_hanging = false;
+                _die();
                 emit_signal("dead");
             }
         }
@@ -92,6 +101,7 @@ void Player::_fixed_process(float delta) {
                 velocity.z -= 4;
                 gravity =9.8;
                 is_hanging = false;
+                _die();
                 emit_signal("dead");
             }
         }
@@ -108,10 +118,12 @@ void Player::_fixed_process(float delta) {
                 velocity.x -= 4;
                 gravity =9.8;
                 is_hanging = false;
+                _die();
                 emit_signal("dead");
             }
         }
         move_and_collide(velocity);
+        
 
     }
     else {

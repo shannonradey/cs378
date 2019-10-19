@@ -1,7 +1,13 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://bin/player.gdns" type="Script" id=1]
 [ext_resource path="res://bin/cam.gdns" type="Script" id=2]
+[ext_resource path="res://BackgroundMusic.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Final.tscn" type="PackedScene" id=4]
+[ext_resource path="res://GUI.tscn" type="PackedScene" id=5]
+[ext_resource path="res://SoundEffects.tscn" type="PackedScene" id=6]
+[ext_resource path="res://mute.png" type="Texture" id=7]
+[ext_resource path="res://bin/mybutton.gdns" type="Script" id=8]
 
 [sub_resource type="SpatialMaterial" id=1]
 
@@ -57,13 +63,32 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 shape = SubResource( 8 )
 
 [node name="Area" type="Area" parent="."]
+editor/display_folded = true
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.475867, 0 )
 shape = SubResource( 9 )
 
 [node name="Spatial" type="Spatial" parent="."]
+editor/display_folded = true
 
 [node name="Camera" type="Camera" parent="Spatial"]
 transform = Transform( 0, 0, -1, 0, 1, 0, 1, 0, 0, -7, 3, 0 )
 script = ExtResource( 2 )
+
+[node name="BackgroundMusic" parent="." instance=ExtResource( 3 )]
+
+[node name="Final" parent="." instance=ExtResource( 4 )]
+
+[node name="GUI" parent="." instance=ExtResource( 5 )]
+
+[node name="SoundEffects" parent="." instance=ExtResource( 6 )]
+
+[node name="MuteButton" type="Button" parent="."]
+margin_left = 17.6842
+margin_top = 533.053
+margin_right = 541.684
+margin_bottom = 1051.05
+rect_scale = Vector2( 0.1, 0.1 )
+icon = ExtResource( 7 )
+script = ExtResource( 8 )

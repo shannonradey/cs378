@@ -20,12 +20,12 @@ AttackLight::~AttackLight() {
 
 void AttackLight::_ready() {
     this->connect("body_shape_entered", this, "_on_body_entered");
-    Node *node = get_node("/root/Spatial/GUI/HBoxContainer/Bars/Bar/Gauge");
-    this->connect("light_hit", node, "_decrement");
 }
 
 
 void AttackLight::_on_body_entered(int body_id, Node *body, int body_shape, int area_shape) {
+    Node *node = body->get_child(11)->get_child(0)->get_child(0)->get_child(0)->get_child(1);
+    this->connect("light_hit", node, "_decrement");
     emit_signal("light_hit");
 }
 
