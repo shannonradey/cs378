@@ -3,7 +3,7 @@
 
 #include <Godot.hpp>
 #include <Node.hpp>
-// #include <NetworkedMultiplayerENet.hpp>
+#include "NetworkedMultiplayerENet.hpp"
 
 namespace godot {
 

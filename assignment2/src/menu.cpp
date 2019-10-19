@@ -34,7 +34,6 @@ void Menu::_process(float delta) {
 
 void Menu::text_changed() {
     name = get_child(3)->call("get_text");
-    Godot::print(name);
 
 }
 
@@ -46,6 +45,8 @@ void Menu::join() {
 
 void Menu::create() {
     Godot::print("CRWATE");
+    get_parent()->set_visible(false);
+    get_node("/root/Network")->call("create_server", name);
 
 
 
