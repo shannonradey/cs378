@@ -33,6 +33,8 @@ public:
     void final();
 
     void stop();
+    void rematch();
+    void disconnect();
 
 
 };

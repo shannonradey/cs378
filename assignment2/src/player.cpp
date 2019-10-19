@@ -157,6 +157,7 @@ void Player::_fixed_process(float delta) {
 
 void Player::init(String nickname, Vector3 startPosition, bool isSlave){
     // static_cast<Label*>(get_node("GUI/Nickname"))->set_text(nickname);
+    
     // set_global_position(startPosition);
 }
 

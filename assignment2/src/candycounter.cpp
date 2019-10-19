@@ -8,6 +8,8 @@ void CandyCounter::_register_methods() {
     register_method("get_count", &CandyCounter::get_count);
     register_method("final", &CandyCounter::final);
     register_method("stop", &CandyCounter::stop);
+    register_method("rematch", &CandyCounter::rematch);
+    register_method("disconnect", &CandyCounter::disconnect);
 }
 
 CandyCounter::CandyCounter() {
@@ -43,5 +45,17 @@ void CandyCounter::stop() {
 
 void CandyCounter::final() {
 	((CanvasItem *)get_parent()->get_parent())->set_visible(true);
+    Node *node = get_parent()->get_child(2);
+    node->connect("pressed", this, "disconnect");
+    node = get_parent()->get_child(3);
+    node->connect("pressed", this, "rematch");
 	dead = true;
+}
+
+void CandyCounter::rematch() {
+    Godot::print("Rematch");
+}
+
+void CandyCounter::disconnect() {
+    Godot::print("disconnect");
 }
