@@ -2,17 +2,16 @@
 #define MENU_H
 
 #include <Godot.hpp>
-#include <Control.hpp>
-#include <BaseButton.hpp>
-//#include <ctime>
+#include <Node2D.hpp>
+#include <TextEdit.hpp>
 
 namespace godot {
 
-class Menu : public Control {
-    GODOT_CLASS(Menu, Control)
+class Menu : public Node2D {
+    GODOT_CLASS(Menu, Node2D)
 
 private:
-   // time_t t;
+	String name;
 
 public:
     static void _register_methods();
@@ -24,6 +23,11 @@ public:
 
     void _ready();
     void _process(float delta);
+
+
+    void create();
+    void join();
+    void text_changed();
 
 
 

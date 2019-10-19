@@ -6,8 +6,6 @@ void Sound::_register_methods() {
     register_method("_ready", &Sound::_ready);
     register_method("_play", &Sound::_play);
     register_method("_mute", &Sound::_mute);
-
-    // register_signal<Sound>((char *)"mute");
 }
 
 Sound::Sound() {
@@ -19,7 +17,6 @@ Sound::~Sound() {
 
 void Sound::_ready() {    
 	is_muted = false;
-	Godot::print(get_path());
 }
 
 void Sound::_init() {

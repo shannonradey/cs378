@@ -27,8 +27,8 @@ void Network::_ready() {
 void Network::create_server(String playerNickname) {
 	selfData["name"] = playerNickname;
 	players[1] = selfData;
-	NetworkedMultiplayerENet *peer = NetworkedMultiplayerENet::_new();
-	peer->set_bind_ip("*");
-	peer->create_server(SERVER_PORT, MAX_PLAYERS);
-	get_tree()->set_network_peer(peer);
+	// NetworkedMultiplayerENet *peer = NetworkedMultiplayerENet::_new();
+	// peer->set_bind_ip("*");
+	// peer->create_server(SERVER_PORT, MAX_PLAYERS);
+	// get_tree()->set_network_peer(peer);
 }
