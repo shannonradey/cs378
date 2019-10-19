@@ -21,7 +21,7 @@ public:
     void _init();
 
     void _ready();
-    void _candy();
+    void _play();
 
     void _mute();
 

@@ -6,6 +6,7 @@
 #include <candycounter.h>
 #include <player.h>
 #include <ctime>
+#include <NodePath.hpp>
 
 namespace godot {
 

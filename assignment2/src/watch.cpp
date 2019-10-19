@@ -8,7 +8,7 @@ void Watch::_register_methods() {
     register_method("start", &Watch::start);
     register_method("stop", &Watch::stop);
 
-    register_signal<Watch>((char*)"dead");
+    // register_signal<Watch>((char*)"dead");
 }
 
 Watch::Watch() {
@@ -18,8 +18,8 @@ Watch::~Watch() {
 }
 
 void Watch::_ready() {    
-    Node* node = get_node("/root/Spatial/Control2/NinePatchRect/Label2");
-    this->connect("dead", node, "final");
+    // Node* node = get_node("/root/Spatial/Control2/NinePatchRect/Label2");
+    // this->connect("dead", node, "final");
 }
 
 void Watch::_init() {
@@ -45,7 +45,7 @@ void Watch::_process(float delta) {
     }
     if (m == 0 && s == 0){
         stop();
-        emit_signal("dead");
+        // emit_signal("dead");
     }
     
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://orange-rectangle.png" type="Texture" id=1]
 [ext_resource path="res://Comfortaa-Bold.ttf" type="DynamicFontData" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://392183__dexus5__negative.wav" type="AudioStream" id=8]
 [ext_resource path="res://candy.png" type="Texture" id=9]
 [ext_resource path="res://bin/candycounter.gdns" type="Script" id=10]
+[ext_resource path="res://341695__projectsu012__coins-1.wav" type="AudioStream" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -64,7 +65,7 @@ valign = 1
 margin_left = 94.0
 margin_right = 490.0
 margin_bottom = 53.0
-value = 60.0
+value = 75.0
 texture_under = ExtResource( 3 )
 texture_progress = ExtResource( 4 )
 script = ExtResource( 5 )
@@ -112,3 +113,7 @@ custom_colors/font_outline_modulate = Color( 0.00784314, 0.00784314, 0.00784314,
 text = "10"
 valign = 1
 script = ExtResource( 10 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="HBoxContainer/Counters/Counter/Background"]
+stream = ExtResource( 11 )
+script = ExtResource( 7 )

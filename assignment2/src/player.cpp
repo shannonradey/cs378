@@ -6,7 +6,8 @@ void Player::_register_methods() {
     register_method("_physics_process", &Player::_fixed_process);
     register_method("_hang", &Player::_hang);
     register_method("_ready", &Player::_ready);
-    register_signal<Player>((char*)"dead");
+    register_method("_die", &Player::_die);
+    // register_signal<Player>((char*)"dead");
 }
 
 Player::Player() {
@@ -17,6 +18,7 @@ Player::~Player() {
 }
 
 void Player::_init() {
+    alive = true;
     gravity = 9.8;
     time_passed = 0.0;
     velocity = Vector3(0, 0, 0);
@@ -27,14 +29,21 @@ void Player::_init() {
     t = time(NULL);
 }
 
+void Player::_die() {
+    set_visible(false);
+    alive = false;
+}
+
 void Player::_ready() {
-    Node *node = get_node("/root/Spatial/Control2/NinePatchRect/Label2");
-    this->connect("dead", node, "final");
-    node = get_node("/root/Spatial/GUI/HBoxContainer/Counters/Counter/Background/Number");
-    this->connect("dead", node, "stop");
+    // Node *node = get_node("/root/Spatial/Control2/NinePatchRect/Label2");
+    // this->connect("dead", node, "final");
+    // node = get_node("/root/Spatial/GUI/HBoxContainer/Counters/Counter/Background/Number");
+    // this->connect("dead", node, "stop");
 }
 
 void Player::_fixed_process(float delta) {
+    if (!alive)
+        return;
     velocity = Vector3(0, 0, 0);
     Vector3 cur;
     Vector3 floor_normal = Vector3(0, 1, 0);
@@ -56,7 +65,7 @@ void Player::_fixed_process(float delta) {
                 velocity.z += 2;
                 gravity =9.8;
                 is_hanging = false;
-                emit_signal("dead");
+                // emit_signal("dead");
             }
         }
         if (edge == "Ledge2") {
@@ -72,7 +81,7 @@ void Player::_fixed_process(float delta) {
                 velocity.x += 4;
                 gravity =9.8;
                 is_hanging = false;
-                emit_signal("dead");
+                // emit_signal("dead");
             }
         }
         if (edge == "Ledge3") {
@@ -88,7 +97,7 @@ void Player::_fixed_process(float delta) {
                 velocity.z -= 4;
                 gravity =9.8;
                 is_hanging = false;
-                emit_signal("dead");
+                // emit_signal("dead");
             }
         }
          if (edge == "Ledge4"){
@@ -104,10 +113,11 @@ void Player::_fixed_process(float delta) {
                 velocity.x -= 4;
                 gravity =9.8;
                 is_hanging = false;
-                emit_signal("dead");
+                // emit_signal("dead");
             }
         }
         move_and_collide(velocity);
+        
 
     }
     else {

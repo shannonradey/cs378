@@ -17,10 +17,9 @@ CandyCounter::CandyCounter() {
 CandyCounter::~CandyCounter() {
 }
 
-void CandyCounter::_ready() {    
-	if (get_path() == "/root/Spatial/Control2/NinePatchRect/Label2") {
+void CandyCounter::_ready() {   
+    if (get_name() == "Label2")
 		((CanvasItem *)get_parent()->get_parent())->set_visible(false);
-	}
 	dead = false;
 }
 

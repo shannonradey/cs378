@@ -25,6 +25,7 @@ private:
     bool is_hanging;
     String edge;
     time_t t;
+    bool alive;
     //int jumps;
     //int MAX_JUMPS;
 
@@ -42,6 +43,7 @@ public:
 
     void _hang(String led);
     void _ready();
+    void _die();
 };
 
 }
