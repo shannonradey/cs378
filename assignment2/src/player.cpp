@@ -1,11 +1,15 @@
 #include "player.h"
 
 using namespace godot;
+using namespace std;
+
+
 
 void Player::_register_methods() {
     register_method("_physics_process", &Player::_fixed_process);
     register_method("_hang", &Player::_hang);
     register_method("_ready", &Player::_ready);
+    register_method("init", &Player::init, GODOT_METHOD_RPC_MODE_DISABLED);
     register_signal<Player>((char*)"dead");
 }
 
@@ -134,10 +138,15 @@ void Player::_fixed_process(float delta) {
         if (input->is_key_pressed(39))
             velocity.y += .7;
         velocity.y -= gravity * delta;
-    	move_and_collide(velocity);
+        move_and_collide(velocity);
     }
 }
-   
+
+
+void Player::init(String nickname, Vector3 startPosition, bool isSlave){
+    static_cast<Label*>(get_node("GUI/Nickname"))->set_text(nickname);
+    // set_global_position(startPosition);
+}
 
 void Player::_hang(String led) {
     is_hanging = true;

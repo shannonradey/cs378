@@ -33,8 +33,6 @@ void Candy::_ready() {
     this->connect("ledge_hit", node, "_hang");
 
 
-    // Godot::print(get_parent()->get_path() + "/AudioStreamPlayer");
-
 }
 
 

@@ -8,6 +8,8 @@
 #include <cmath>
 #include <Transform.hpp>
 #include <candycounter.h>
+#include <Area.hpp>
+#include <candy.h>
 #include <ctime>
 
 namespace godot {
@@ -25,8 +27,6 @@ private:
     bool is_hanging;
     String edge;
     time_t t;
-    //int jumps;
-    //int MAX_JUMPS;
 
 
 
@@ -37,11 +37,13 @@ public:
     ~Player();
 
     void _init();
+    void player_on_body_entered(int body_id, Node* body, int body_shape, int area_shape);
 
     void _fixed_process(float delta);
 
     void _hang(String led);
     void _ready();
+    void init(String nickname, Vector3 startPosition, bool isSlave);
 };
 
 }
