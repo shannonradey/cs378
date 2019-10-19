@@ -22,18 +22,6 @@ Candy::~Candy() {
 
 void Candy::_ready() {
     this->connect("body_shape_entered", this, "_on_body_entered");
-    // Node *node = get_node("/root/Spatial/GUI/HBoxContainer/Counters/Counter/Background/Number");
-    // this->connect("candy_hit", node, "_increment");
-    // node = get_node("/root/Spatial/Spatial/AudioStreamPlayer");
-    // this->connect("candy_hit", node, "_candy");
-    // node = get_node("/root/Spatial/Control2/NinePatchRect/Label2");
-    // this->connect("candy_hit", node, "_increment");
-
-    // node = get_node("/root/Spatial/Player");
-    // this->connect("ledge_hit", node, "_hang");
-
-
-    // Godot::print(get_parent()->get_path() + "/AudioStreamPlayer");
 
 }
 

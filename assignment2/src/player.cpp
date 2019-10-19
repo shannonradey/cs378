@@ -7,7 +7,7 @@ void Player::_register_methods() {
     register_method("_hang", &Player::_hang);
     register_method("_ready", &Player::_ready);
     register_method("_die", &Player::_die);
-    // register_signal<Player>((char*)"dead");
+    register_signal<Player>((char*)"dead");
 }
 
 Player::Player() {
@@ -35,10 +35,8 @@ void Player::_die() {
 }
 
 void Player::_ready() {
-    // Node *node = get_node("/root/Spatial/Control2/NinePatchRect/Label2");
-    // this->connect("dead", node, "final");
-    // node = get_node("/root/Spatial/GUI/HBoxContainer/Counters/Counter/Background/Number");
-    // this->connect("dead", node, "stop");
+    Node *node = this->get_child(10)->get_child(0)->get_child(1);
+    this->connect("dead", node, "final");
 }
 
 void Player::_fixed_process(float delta) {
@@ -65,7 +63,8 @@ void Player::_fixed_process(float delta) {
                 velocity.z += 2;
                 gravity =9.8;
                 is_hanging = false;
-                // emit_signal("dead");
+                _die();
+                emit_signal("dead");
             }
         }
         if (edge == "Ledge2") {
@@ -81,7 +80,8 @@ void Player::_fixed_process(float delta) {
                 velocity.x += 4;
                 gravity =9.8;
                 is_hanging = false;
-                // emit_signal("dead");
+                _die();
+                emit_signal("dead");
             }
         }
         if (edge == "Ledge3") {
@@ -97,7 +97,8 @@ void Player::_fixed_process(float delta) {
                 velocity.z -= 4;
                 gravity =9.8;
                 is_hanging = false;
-                // emit_signal("dead");
+                _die();
+                emit_signal("dead");
             }
         }
          if (edge == "Ledge4"){
@@ -113,7 +114,8 @@ void Player::_fixed_process(float delta) {
                 velocity.x -= 4;
                 gravity =9.8;
                 is_hanging = false;
-                // emit_signal("dead");
+                _die();
+                emit_signal("dead");
             }
         }
         move_and_collide(velocity);
